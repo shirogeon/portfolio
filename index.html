@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leon - Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 60px 20px 20px;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    nav {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    nav a {
+      padding: 12px 18px;
+      margin: 5px 0;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-left: 4px solid #00ffaa;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0,0,0,0.5);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #00ffaa;
+    }
+
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .project-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .project-item:hover {
+      background: rgba(0, 255, 170, 0.2);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #111;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 10px;
+      color: #fff;
+      overflow-y: auto;
+      max-height: 80vh;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup-content h3 {
+      margin-top: 0;
+      color: #00ffaa;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 14px;
+      background: #00ffaa;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      position: relative;
+      color: #aaa;
+    }
+
+    .skill-bar {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .skill-fill {
+      background: #00ffaa;
+      height: 20px;
+      width: 0%;
+      animation: grow 2s forwards;
+    }
+
+    @keyframes grow {
+      100% { width: 90%; }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        background: rgba(0,0,0,0.6);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header id="home">
+  Welcome to My Web Creations
+</header>
+
+<nav>
+  <a href="#about">Tentang Saya</a>
+  <a href="#projects">Projek</a>
+  <a href="#contact">Kontak</a>
+</nav>
+
+<section id="about">
+  <h2>Tentang Saya</h2>
+  <p style="font-size: 18px;">Saya adalah seorang pengembang web yang bersemangat menciptakan antarmuka menarik dan fungsional. Fokus saya pada pengembangan website dinamis, baik untuk bisnis, portofolio pribadi, maupun sistem web seperti kasir atau booking online.</p>
+  
+  <h3 style="margin-top:40px; color:#00ffaa;">Progress Skill</h3>
+  <div class="skill-bar"><div class="skill-fill" style="width: 90%">HTML (90%)</div></div>
+  <div class="skill-bar"><div class="skill-fill" style="width: 85%">CSS (85%)</div></div>
+  <div class="skill-bar"><div class="skill-fill" style="width: 80%">JavaScript (80%)</div></div>
+  <div class="skill-bar"><div class="skill-fill" style="width: 75%">PHP (75%)</div></div>
+  <div class="skill-bar"><div class="skill-fill" style="width: 70%">MySQL (70%)</div></div>
+</section>
+
+<section id="projects">
+  <h2>Projek</h2>
+  <div class="project-list">
+    <div class="project-item" onclick="openPopup('project1')">Website Kasir</div>
+    <div class="project-item" onclick="openPopup('project2')">Sistem Booking Online</div>
+    <div class="project-item" onclick="openPopup('project3')">Website E-Commerce Aplikasi</div>
+  </div>
+</section>
+
+<div id="popup" class="popup" onclick="closePopup()">
+  <div class="popup-content" onclick="event.stopPropagation()">
+    <h3 id="popup-title"></h3>
+    <p id="popup-desc"></p>
+    <button class="close-btn" onclick="closePopup()">Tutup</button>
+  </div>
+</div>
+
+<section id="contact">
+  <h2>Kontak</h2>
+  <p style="font-size: 18px;">Hubungi saya melalui email: <strong>leonwebdev@example.com</strong><br>Atau lewat Instagram: <strong>@leonwebdev</strong></p>
+</section>
+
+<footer>
+  &copy; 2025 Leon Web Dev. All rights reserved.
+</footer>
+
+<script>
+  const popupData = {
+    project1: {
+      title: 'Website Kasir',
+      desc: 'Sistem kasir dengan fitur diskon, struk, dan keranjang pintar. Dibuat dengan HTML, CSS, dan JavaScript.'
+    },
+    project2: {
+      title: 'Sistem Booking Online',
+      desc: 'Aplikasi untuk booking hotel dan lapangan, dengan JSON storage dan fitur lengkap untuk manajemen waktu.'
+    },
+    project3: {
+      title: 'Website E-Commerce Aplikasi',
+      desc: 'Platform penjualan akun premium (Netflix, Canva, dll) dengan sistem langganan, admin panel, dan auto-checkout ke WhatsApp.'
+    }
+  };
+
+  function openPopup(key) {
+    document.getElementById("popup-title").innerText = popupData[key].title;
+    document.getElementById("popup-desc").innerText = popupData[key].desc;
+    document.getElementById("popup").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+</script>
+
+</body>
+</html>
